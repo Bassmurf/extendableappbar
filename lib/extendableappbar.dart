@@ -15,7 +15,7 @@ typedef Widget ExtendableAppBarBuilder(double height, double percentage);
 typedef void DismissCallback(double percentage);
 
 ///ExtandableAppBar class
-class ExtandableAppBar extends StatefulWidget {
+class ExtendableAppBar extends StatefulWidget {
   ///Required option to set the minimum and maximum height
   final double minHeight, maxHeight;
 
