@@ -177,7 +177,7 @@ class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProvider
               (widget.maxHeight - widget.minHeight);
 
           return Stack(
-            alignment: alignment,
+            alignment: widget.alignment,
             children: [
               if (_percentage > 0)
                 GestureDetector(
@@ -189,7 +189,7 @@ class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProvider
                   ),
                 ),
               Align(
-                alignment: alignment,
+                alignment: widget.alignment,
                 child: SizedBox(
                   height: height,
                   child: GestureDetector(
