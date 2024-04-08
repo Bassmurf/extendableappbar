@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MiniplayerWillPopScope extends StatefulWidget {
-  const MiniplayerWillPopScope({
+class ExtendableAppBarWillPopScope extends StatefulWidget {
+  const ExtendableAppBarWillPopScope({
     Key? key,
     required this.child,
     required this.onWillPop,
@@ -11,17 +11,17 @@ class MiniplayerWillPopScope extends StatefulWidget {
   final WillPopCallback onWillPop;
 
   @override
-  _MiniplayerWillPopScopeState createState() => _MiniplayerWillPopScopeState();
+  _ExtendableAppBarWillPopScopeState createState() => _ExtendableAppBarWillPopScopeState();
 
-  static _MiniplayerWillPopScopeState? of(BuildContext context) {
-    return context.findAncestorStateOfType<_MiniplayerWillPopScopeState>();
+  static _ExtendableAppBarWillPopScopeState? of(BuildContext context) {
+    return context.findAncestorStateOfType<_ExtendableAppBarWillPopScopeState>();
   }
 }
 
-class _MiniplayerWillPopScopeState extends State<MiniplayerWillPopScope> {
+class _ExtendableAppBarWillPopScopeState extends State<ExtendableAppBarWillPopScope> {
   ModalRoute<dynamic>? _route;
 
-  _MiniplayerWillPopScopeState? _descendant;
+  _ExtendableAppBarWillPopScopeState? _descendant;
 
   set descendant(state) {
     _descendant = state;
@@ -48,7 +48,7 @@ class _MiniplayerWillPopScopeState extends State<MiniplayerWillPopScope> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var parentGuard = MiniplayerWillPopScope.of(context);
+    var parentGuard = ExtendableAppBarWillPopScope.of(context);
     if (parentGuard != null) {
       parentGuard.descendant = this;
     }
