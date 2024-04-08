@@ -52,6 +52,7 @@ class Miniplayer extends StatefulWidget {
 
   ///Used to set the color of the background box shadow
   final Color backgroundBoxShadow;
+  final Alignment alignment;
 
   const Miniplayer({
     Key? key,
@@ -67,6 +68,7 @@ class Miniplayer extends StatefulWidget {
     this.onDismissed,
     this.controller,
     this.backgroundBoxShadow = Colors.black45,
+    this.alignment = Alignment.bottomCenter,
   }) : super(key: key);
 
   @override
@@ -175,7 +177,7 @@ class _MiniplayerState extends State<Miniplayer> with TickerProviderStateMixin {
               (widget.maxHeight - widget.minHeight);
 
           return Stack(
-            alignment: Alignment.bottomCenter,
+            alignment: alignment,
             children: [
               if (_percentage > 0)
                 GestureDetector(
@@ -187,7 +189,7 @@ class _MiniplayerState extends State<Miniplayer> with TickerProviderStateMixin {
                   ),
                 ),
               Align(
-                alignment: Alignment.bottomCenter,
+                alignment: alignment,
                 child: SizedBox(
                   height: height,
                   child: GestureDetector(
