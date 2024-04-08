@@ -1,4 +1,4 @@
-import 'package:miniplayer/miniplayer.dart';
+import 'package:extendableappbar/extendableappbar.dart';
 
 extension SelectedColorExtension on PanelState {
   int get heightCode {
