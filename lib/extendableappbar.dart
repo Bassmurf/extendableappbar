@@ -1,35 +1,35 @@
-library miniplayer;
+library extendableappbar;
 
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:miniplayer/src/miniplayer_will_pop_scope.dart';
-import 'package:miniplayer/src/utils.dart';
+import 'package:extendableappbar/src/extendableappbar_will_pop_scope.dart';
+import 'package:extendableappbar/src/utils.dart';
 
-export 'package:miniplayer/src/miniplayer_will_pop_scope.dart';
+export 'package:extendableappbar/src/extendableappbar_will_pop_scope.dart';
 
 ///Type definition for the builder function
-typedef Widget MiniplayerBuilder(double height, double percentage);
+typedef Widget ExtendableAppBarBuilder(double height, double percentage);
 
 ///Type definition for onDismiss. Will be used in a future version.
 typedef void DismissCallback(double percentage);
 
-///Miniplayer class
-class Miniplayer extends StatefulWidget {
+///ExtandableAppBar class
+class ExtandableAppBar extends StatefulWidget {
   ///Required option to set the minimum and maximum height
   final double minHeight, maxHeight;
 
-  ///Option to enable and set elevation for the miniplayer
+  ///Option to enable and set elevation for the extendableappbar
   final double elevation;
 
   ///Central API-Element
   ///Provides a builder with useful information
-  final MiniplayerBuilder builder;
+  final ExtendableAppBarBuilder builder;
 
   ///Option to set the animation curve
   final Curve curve;
 
-  ///Sets the background-color of the miniplayer
+  ///Sets the background-color of the extendableappbar
   final Color? backgroundColor;
 
   ///Option to set the animation duration
@@ -44,17 +44,17 @@ class Miniplayer extends StatefulWidget {
       "Migrate onDismiss to onDismissed as onDismiss will be used differently in a future version.")
   final Function? onDismiss;
 
-  ///If onDismissed is set, the miniplayer can be dismissed
+  ///If onDismissed is set, the extendableappbar can be dismissed
   final Function? onDismissed;
 
-  //Allows you to manually control the miniplayer in code
-  final MiniplayerController? controller;
+  //Allows you to manually control the extendableappbar in code
+  final ExtendableAppBarController? controller;
 
   ///Used to set the color of the background box shadow
   final Color backgroundBoxShadow;
   final Alignment alignment;
 
-  const Miniplayer({
+  const ExtendableAppBar({
     Key? key,
     required this.minHeight,
     required this.maxHeight,
@@ -72,10 +72,10 @@ class Miniplayer extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MiniplayerState createState() => _MiniplayerState();
+  _ExtendableAppBarState createState() => _ExtendableAppBarState();
 }
 
-class _MiniplayerState extends State<Miniplayer> with TickerProviderStateMixin {
+class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProviderStateMixin {
   late ValueNotifier<double> heightNotifier;
   ValueNotifier<double> dragDownPercentage = ValueNotifier(0);
 
@@ -162,7 +162,7 @@ class _MiniplayerState extends State<Miniplayer> with TickerProviderStateMixin {
       return Container();
     }
 
-    return MiniplayerWillPopScope(
+    return ExtendableAppBarWillPopScope(
       onWillPop: () async {
         if (heightNotifier.value > widget.minHeight) {
           _snapToPosition(PanelState.MIN);
@@ -430,19 +430,19 @@ class ControllerData {
   const ControllerData(this.height, this.duration);
 }
 
-//MiniplayerController class
-class MiniplayerController extends ValueNotifier<ControllerData?> {
-  MiniplayerController() : super(null);
+//ExtendableAppBarController class
+class ExtendableAppBarController extends ValueNotifier<ControllerData?> {
+  ExtendableAppBarController() : super(null);
 
   //Animates to a given height or state(expanded, dismissed, ...)
   void animateToHeight(
       {double? height, PanelState? state, Duration? duration}) {
     if (height == null && state == null) {
-      throw ("Miniplayer: One of the two parameters, height or status, is required.");
+      throw ("ExtendableAppBar: One of the two parameters, height or status, is required.");
     }
 
     if (height != null && state != null) {
-      throw ("Miniplayer: Only one of the two parameters, height or status, can be specified.");
+      throw ("ExtendableAppBar: Only one of the two parameters, height or status, can be specified.");
     }
 
     ControllerData? valBefore = value;
