@@ -2,7 +2,7 @@ name: extendableappbar
 description: A lightweight flutter package to simplify the creation of an extendable appbar.
 version: 1.0.3
 homepage: https://www.peterscode.dev
-repository: https://github.com/dxvid-pts/miniplayer
+repository: https://github.com/Bassmurf/extendableappbar.git
 
 environment:
   sdk: ">=2.12.0 <4.0.0"
