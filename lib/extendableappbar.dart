@@ -316,6 +316,7 @@ class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProvider
       if (dragUpPercentage.value != 0) {
         dragUpPercentage.value = 0;
       }
+      print("Troubling: hit");
 
       if (_dragHeight > widget.maxHeight) return;
 
