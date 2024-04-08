@@ -77,7 +77,7 @@ class ExtendableAppBar extends StatefulWidget {
 
 class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProviderStateMixin {
   late ValueNotifier<double> heightNotifier;
-  ValueNotifier<double> dragDownPercentage = ValueNotifier(0);
+  ValueNotifier<double> dragUpPercentage = ValueNotifier(0);
 
   ///Temporary variable as long as onDismiss is deprecated. Will be removed in a future version.
   Function? onDismissed;
@@ -194,7 +194,7 @@ class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProvider
                   height: height,
                   child: GestureDetector(
                     child: ValueListenableBuilder(
-                      valueListenable: dragDownPercentage,
+                      valueListenable: dragUpPercentage,
                       builder:
                           (BuildContext context, double value, Widget? child) {
                         return Opacity(
@@ -313,8 +313,8 @@ class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProvider
   void _handleHeightChange({bool animation = false}) {
     ///Drag above minHeight
     if (_dragHeight >= widget.minHeight) {
-      if (dragDownPercentage.value != 0) {
-        dragDownPercentage.value = 0;
+      if (dragUpPercentage.value != 0) {
+        dragUpPercentage.value = 0;
       }
 
       if (_dragHeight > widget.maxHeight) return;
@@ -330,8 +330,8 @@ class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProvider
           value: percentageFromValueInRange(
               min: widget.minHeight, max: 0, value: _dragHeight));
 
-      if (dragDownPercentage.value != percentageDown) {
-        dragDownPercentage.value = percentageDown;
+      if (dragUpPercentage.value != percentageDown) {
+        dragUpPercentage.value = percentageDown;
       }
 
       if (percentageDown >= 1 && animation && !dismissed) {
