@@ -294,7 +294,7 @@ class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProvider
                     onPanUpdate: (details) {
                       if (dismissed) return;
 
-                      _dragHeight -= details.delta.dy;
+                      _dragHeight += details.delta.dy;
                       updateCount++;
 
                       _handleHeightChange();
@@ -316,9 +316,9 @@ class _ExtendableAppBarState extends State<ExtendableAppBar> with TickerProvider
       if (dragUpPercentage.value != 0) {
         dragUpPercentage.value = 0;
       }
-      print("Troubling 1: hit");
+
       if (_dragHeight > widget.maxHeight) return;
-      print("Troubling 2: hit");
+
       heightNotifier.value = _dragHeight;
     }
 
